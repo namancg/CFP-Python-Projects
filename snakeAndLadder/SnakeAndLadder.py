@@ -12,6 +12,8 @@ class SnakeAndLadder:
         elif option == 1:
             print("LADDER")
             position = position + dice
+            if position > 100:
+                position = position - dice
         elif option == 2:
             print("SNAKE")
             position = position - dice
@@ -19,3 +21,4 @@ class SnakeAndLadder:
                 position = 0
         print("DICE ROLLED: " + str(dice))
         print("CURRENT POSITION: " + str(position))
+    print("WINNER")
