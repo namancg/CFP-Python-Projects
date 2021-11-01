@@ -12,11 +12,18 @@ class EmployeeWage:
     maxHoursInAMonth = 100
     workingHours = 0
 
-    def getEmployeeWage(self,companyName,wagePerHour,noOfWorkingDays,maxHoursInAMonth):
+    def __init__(self, companyName, wagePerHour, noOfWorkingDays, maxHoursInAMonth):
+        """TO INITIALIZE INSTANCE VARIABLE"""
+        self.companyName = companyName
+        self.noOfWorkingDays = noOfWorkingDays
+        self.wagePerHour = wagePerHour
+        self.maxHoursInAMonth = maxHoursInAMonth
+
+    def getEmployeeWage(self):
         """METHOD THAT CALCULATES EMPLOYEE WAGE"""
         totalWorkingDays = 0
         totalEmployeeHours = 0
-        while totalWorkingDays < noOfWorkingDays and totalEmployeeHours <= maxHoursInAMonth:
+        while totalWorkingDays < self.noOfWorkingDays and totalEmployeeHours <= self.maxHoursInAMonth:
             emp = random.randint(0, 2)
             if emp == self.isPresent:
                 print("EMPLOYEE IS FULL TIME")
@@ -29,15 +36,18 @@ class EmployeeWage:
                 workingHours = 0
             totalEmployeeHours = totalEmployeeHours + workingHours
             totalWorkingDays = totalWorkingDays + 1
-        totalWage = totalEmployeeHours + wagePerHour
-        print(companyName)
-        print("TOTAL WAGE: "+str(totalWage))
+            wage = workingHours + self.wagePerHour
+        totalWage = totalEmployeeHours + self.wagePerHour
+        print("DAILY WAGE: " + str(wage))
+        print(self.companyName)
+        print("TOTAL WAGE: " + str(totalWage))
 
 
-totalEmployeeWage = EmployeeWage()
-#totalEmployeeWage.getEmployeeWage()
-#print("TOTAL WAGE: " + str(totalEmployeeWage.totalWage))
-totalEmployeeWage.getEmployeeWage("PERFIOS",20,20,100)
-totalEmployeeWage.getEmployeeWage("FORMULA 1",30,60,80)
-totalEmployeeWage.getEmployeeWage("MERCEDES",40,30,90)
-
+# totalEmployeeWage.getEmployeeWage()
+# print("TOTAL WAGE: " + str(totalEmployeeWage.totalWage))
+totalEmployeeWage = EmployeeWage("PERFIOS", 20, 20, 100)
+totalEmployeeWage.getEmployeeWage()
+totalEmployeeWage = EmployeeWage("FORMULA 1", 30, 60, 80)
+totalEmployeeWage.getEmployeeWage()
+totalEmployeeWage = EmployeeWage("MERCEDES", 40, 30, 90)
+totalEmployeeWage.getEmployeeWage()
