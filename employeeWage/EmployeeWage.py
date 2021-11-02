@@ -1,4 +1,5 @@
 import random
+from company_employee_wage import CompanyEmployeeWage
 
 
 class EmployeeWage:
@@ -6,47 +7,42 @@ class EmployeeWage:
     IS_ABSENT = 0
     IS_PRESENT = 1
     IS_PART_TIME = 2
-    TOTAL_WAGE = 0
-    WAGE_PER_HOUR = 20
-    NO_OF_WORKING_DAYS = 20
-    MAX_HRS_IN_A_MONTH = 100
-    workingHours = 0
+    company_employee_wage_list = []
 
-    def __init__(self, companyName, WAGE_PER_HOUR, NO_OF_WORKING_DAYS, MAX_HRS_IN_A_MONTH):
-        self.companyName = companyName
-        self.NO_OF_WORKING_DAYS = NO_OF_WORKING_DAYS
-        self.WAGE_PER_HOUR = WAGE_PER_HOUR
-        self.MAX_HRS_IN_A_MONTH = MAX_HRS_IN_A_MONTH
+    def add_employee_wage(self, company_name, WAGE_PER_HOUR, NO_OF_WORKING_DAYS, MAX_HRS_IN_A_MONTH):
+        self.company_employee_wage_list.append(
+            CompanyEmployeeWage(company_name, WAGE_PER_HOUR, NO_OF_WORKING_DAYS, MAX_HRS_IN_A_MONTH))
 
-    def getEmployeeWage(self):
+    def calculate_company_employee_wage(self):
+        for i in range(len(self.company_employee_wage_list)):
+            self.company_employee_wage_list[i].set_total_employee_wage(
+                self.getEmployeeWage(self.company_employee_wage_list[i]))
+        print(self.company_employee_wage_list[i])
+
+    def getEmployeeWage(self, Employee):
         """METHOD THAT CALCULATES EMPLOYEE WAGE"""
         TOTAL_WORKING_DAYS = 0
         TOTAL_EMPLOYEE_HOURS = 0
-        while TOTAL_WORKING_DAYS < self.NO_OF_WORKING_DAYS and TOTAL_EMPLOYEE_HOURS <= self.MAX_HRS_IN_A_MONTH:
+        while TOTAL_EMPLOYEE_HOURS < Employee.MAX_HRS_IN_A_MONTH and TOTAL_WORKING_DAYS < Employee.NO_OF_WORKING_DAYS:
             emp = random.randint(0, 2)
-            if emp == self.IS_PRESENT:
-                print("EMPLOYEE IS FULL TIME")
-                workingHours = 8
-            elif emp == self.IS_PART_TIME:
-                print("EMPLOYEE IS PART TIME")
-                workingHours = 4
-            else:
-                print("EMPLOYEE IS ABSENT")
-                workingHours = 0
-            TOTAL_EMPLOYEE_HOURS = TOTAL_EMPLOYEE_HOURS + workingHours
-            TOTAL_WORKING_DAYS = TOTAL_WORKING_DAYS + 1
-            wage = workingHours + self.WAGE_PER_HOUR
-        TOTAL_WAGE = TOTAL_EMPLOYEE_HOURS + self.WAGE_PER_HOUR
-        print("DAILY WAGE: " + str(wage))
-        print(self.companyName)
-        print("TOTAL WAGE: " + str(TOTAL_WAGE))
+        if emp == self.IS_PRESENT:
+            print("EMPLOYEE IS FULL TIME")
+            working_hours = 8
+        elif emp == self.IS_PART_TIME:
+            print("EMPLOYEE IS PART TIME")
+            working_hours = 4
+        else:
+            print("EMPLOYEE IS ABSENT")
+            working_hours = 0
+        TOTAL_EMPLOYEE_HOURS = TOTAL_EMPLOYEE_HOURS + working_hours
+        TOTAL_WORKING_DAYS = TOTAL_WORKING_DAYS + 1
+        print(Employee.company_name)
+        print("TOTAL WAGE: {0}".format(str(TOTAL_EMPLOYEE_HOURS * Employee.WAGE_PER_HOUR)))
+        return TOTAL_EMPLOYEE_HOURS * Employee.WAGE_PER_HOUR
 
 
-# TOTAL_EMPLOYEE_WAGE.getEmployeeWage()
-# print("TOTAL WAGE: " + str(TOTAL_EMPLOYEE_WAGE.TOTAL_WAGE))
-TOTAL_EMPLOYEE_WAGE = EmployeeWage("PERFIOS", 20, 20, 100)
-TOTAL_EMPLOYEE_WAGE.getEmployeeWage()
-TOTAL_EMPLOYEE_WAGE = EmployeeWage("FORMULA 1", 30, 60, 80)
-TOTAL_EMPLOYEE_WAGE.getEmployeeWage()
-TOTAL_EMPLOYEE_WAGE = EmployeeWage("MERCEDES", 40, 30, 90)
-TOTAL_EMPLOYEE_WAGE.getEmployeeWage()
+employee = EmployeeWage()
+employee.add_employee_wage("PERFIOS", 20, 20, 10)
+employee.add_employee_wage("FORMULA 1", 30, 60, 20)
+employee.add_employee_wage("MERCEDES", 40, 30, 20)
+employee.calculate_company_employee_wage()
