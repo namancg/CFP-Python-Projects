@@ -9,12 +9,12 @@ address_books.append(contact_1)
 contact_2 = AddressBook("Raksha", "R", "JP Nagar", "Bangalore", "Karnataka", "560034", "95945887845",
                         "raksha@gmail.com")
 address_books.append(contact_2)
-contact_3 = AddressBook("Sanjit", "Kangovi", "ISRO Layout", "Noida", "Delhi", "460034", "7259332866",
-                        "sanjit@gmail.com")
-address_books.append(contact_3)
+# contact_3 = AddressBook("Sanjit", "Kangovi", "ISRO Layout", "Noida", "Delhi", "460034", "7259332866",
+#                         "sanjit@gmail.com")
+# address_books.append(contact_3)
 print(contact_1)
 print(contact_2)
-print(contact_3)
+# print(contact_3)
 
 
 def edit_contact(contact_to_edit, updated_contact):
@@ -60,7 +60,6 @@ def search_contact_by_city(city_to_search):
             print(contact)
 
 
-address_books.append(contact_2)
 city_to_search = "Bangalore"
 search_contact_by_city(city_to_search)
 
@@ -74,3 +73,10 @@ def search_contact_by_state(state_to_search):
 
 state_to_search = "Delhi"
 search_contact_by_state(state_to_search)
+
+address_books_dictionary={"addressbooks":[]}
+for i in range(len(address_books)):
+    contact = address_books[i]
+    address_books_dictionary["addressbooks"].append(contact.__dict__())
+with open("sample.json","w") as outfile:
+    json.dump(address_books_dictionary,outfile)
