@@ -33,3 +33,16 @@ def print_addressBook():
 
 print("AFTER UPDATING")
 print_addressBook()
+
+
+def delete_contact(contact_to_delete):
+    for i in range(len(address_books)):
+        contact = address_books[i]
+        if contact.first_name == contact_to_delete:
+            address_books.remove(contact)
+
+
+contact_to_delete = "Raksha"
+delete_contact(contact_to_delete)
+print("AFTER DELETING")
+print_addressBook()
