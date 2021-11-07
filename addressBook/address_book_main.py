@@ -17,6 +17,7 @@ print(contact_2)
 print(contact_3)
 
 
+# FUNCTION TO EDIT CONTACT
 def edit_contact(contact_to_edit, updated_contact):
     for i in range(len(address_books)):
         contact = address_books[i]
@@ -30,6 +31,7 @@ updated_contact = AddressBook("Naman", "Chandra", "Basavanagudi", "Bangalore", "
 edit_contact(contact_to_edit, updated_contact)
 
 
+# FUNCTION TO PRINT ADDRESSBOOK
 def print_addressBook():
     for i in range(len(address_books)):
         contact = address_books[i]
@@ -40,6 +42,7 @@ print("AFTER UPDATING")
 print_addressBook()
 
 
+# FUNCTION TO DELETE CONTACT
 def delete_contact(contact_to_delete):
     for i in range(len(address_books)):
         contact = address_books[i]
@@ -53,6 +56,7 @@ print("AFTER DELETING")
 print_addressBook()
 
 
+# FUNCTION TO SEARCH CONTACT BY CITY
 def search_contact_by_city(city_to_search):
     for i in range(len(address_books)):
         contact = address_books[i]
@@ -64,6 +68,7 @@ city_to_search = "Bangalore"
 search_contact_by_city(city_to_search)
 
 
+# FUNCTION TO SEARCH CONTACT BY STATE
 def search_contact_by_state(state_to_search):
     for i in range(len(address_books)):
         contact = address_books[i]
@@ -74,9 +79,39 @@ def search_contact_by_state(state_to_search):
 state_to_search = "Delhi"
 search_contact_by_state(state_to_search)
 
-address_books_dictionary={"addressbooks":[]}
-for i in range(len(address_books)):
-    contact = address_books[i]
-    address_books_dictionary["addressbooks"].append(contact.__dict__())
-with open("sample.json","w") as outfile:
-    json.dump(address_books_dictionary,outfile)
+
+# FUNCTION TO WRITE TO JSON
+def write_to_json(json_file):
+    address_books_dictionary = {"addressbooks": []}
+    for i in range(len(address_books)):
+        contact = address_books[i]
+        address_books_dictionary["addressbooks"].append(contact.__dict__())
+    with open(json_file, "w") as outfile:
+        json.dump(address_books_dictionary, outfile)
+
+
+json_file = "sample.json"
+print("WRITING TO JSON FILE")
+write_to_json(json_file)
+
+
+# FUNCTION TO READ FROM JSON
+def read_from_json(json_file1):
+    global address_books
+    address_books = []
+    with open(json_file1) as infile:
+        data = json.load(infile)
+    for contact in data["addressbooks"]:
+        first_name = contact["first_name"]
+        last_name = contact["last_name"]
+        address = contact["address"]
+        city = contact["city"]
+        state = contact["state"]
+        zip_code = contact["zip_code"]
+        phone = contact["phone"]
+        email = contact["email"]
+        address_books.append(AddressBook(first_name, last_name, address, city, state, zip_code, phone, email))
+
+
+print("READING FROM JSON")
+read_from_json(json_file)
