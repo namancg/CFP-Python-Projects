@@ -23,3 +23,10 @@ def test_editing_contact(address_book):
     assert address_book.total_count() == 1
 
 
+def test_deleting_contact(address_book):
+    person_to_be_deleted = "Aashvi"
+    address_book.delete_contact(person_to_be_deleted)
+    assert address_book.total_count() == 0
+
+
+
