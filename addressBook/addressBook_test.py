@@ -29,4 +29,16 @@ def test_deleting_contact(address_book):
     assert address_book.total_count() == 0
 
 
+def test_search_by_city(address_book):
+    city_to_be_searched = "Bangalore"
+    address_book.search_contact_by_city(city_to_be_searched)
+    assert address_book.total_count() == 1
+
+
+def test_search_by_state(address_book):
+    state_to_be_searched = "Karnataka"
+    address_book.search_contact_by_state(state_to_be_searched)
+    assert address_book.total_count() == 1
+
+
 
