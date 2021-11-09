@@ -1,4 +1,4 @@
-class AddressBook:
+class Address:
     def __init__(self, first_name, last_name, address, city, state, zip_code, phone, email):
         """
 
