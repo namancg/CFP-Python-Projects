@@ -50,4 +50,11 @@ def test_write_and_read_to_json(address_book):
     assert address_book.total_count() == 1
 
 
+def test_mapping_state_with_person(address_book):
+    state_person_mapping = address_book.map_state_with_person()
+    assert state_person_mapping["Karnataka"][0].first_name == "Aashvi"
 
+
+def test_mapping_city_with_person(address_book):
+    city_person_mapping = address_book.map_city_with_person()
+    assert city_person_mapping["Bangalore"][0].first_name == "Aashvi"
