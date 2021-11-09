@@ -37,6 +37,13 @@ class AddressBook:
             string += "Contact Number: {}: {}\n".format(i + 1, contact)
         return string
 
+    def total_count(self):
+        """
+        :return: length of addressBook
+        # """
+        # length = len(address_books)
+        return len(self.address_books)
+
     def delete_contact(self, contact_to_delete):
         """
         :param contact_to_delete: the contact which is to be deleted
@@ -127,53 +134,61 @@ class AddressBook:
 
 if __name__ == "__main__":
     address_book = AddressBook()
-    contact_1 = Address("Naman", "Chandra", "Basavanagudi", "Bangalore", "Karnataka", "560004", "9538169967",
-                        "naman@gmail.com")
-    contact_2 = Address("Raksha", "R", "JP Nagar", "Bangalore", "Karnataka", "560034", "95945887845",
-                        "raksha@gmail.com")
-    contact_3 = Address("Sanjit", "Kangovi", "ISRO Layout", "Noida", "Delhi", "460034", "7259332866",
-                        "sanjit@gmail.com")
-    address_book.add_contact(contact_1)
-    address_book.add_contact(contact_2)
-    address_book.add_contact(contact_3)
-    print(address_book)
-
-    print("AFTER UPDATING")
-    contact_to_edit = "9538169967"
-    updated_contact = Address("Naman", "Chandra", "Basavanagudi", "Bangalore", "Karnataka", "560004", "+919538169967",
-                              "namanchandra@gmail.com")
-    address_book.edit_contact(contact_to_edit)
-    print(address_book)
-
-    contact_to_delete = "Sanjit"
-    address_book.delete_contact(contact_to_delete)
-    print("AFTER DELETING")
-    print(address_book)
-
-    city_to_search = "Bangalore"
-    address_book.search_contact_by_city(city_to_search)
-
-    state_to_search = "Delhi"
-    address_book.search_contact_by_state(state_to_search)
-
-    json_file = "sample.json"
-    print("WRITING TO JSON FILE")
-    address_book.write_to_json(json_file)
-
-    print("READING FROM JSON")
-    address_book.read_from_json(json_file)
-    print(address_book)
-
-    print("STATE PERSON MAPPING")
-    person_state_mapping = address_book.map_state_with_person()
-    for key, value in person_state_mapping.items():
-        print("State: {}, Person Count: {}".format(key, len(value)))
-        for contact in value:
-            print(contact)
-
-    print("CITY PERSON MAPPING")
-    city_person_mapping = address_book.map_city_with_person()
-    for key, value in city_person_mapping.items():
-        print("City: {}, Person Count: {}".format(key, len(value)))
-        for contact in value:
-            print(contact)
+    print(
+        "1.ADD CONTACT \n2.EDIT CONTACT \n3.DELETE CONTACT \n4.WRITE TO JSON \n5.READ FROM JSON \n6.SEARCH BY CITY "
+        "\n7.SEARCH BY STATE \n8.CITY PERSON MAPPING \n9.STATE PERSON MAPPING")
+    print("ENTER THE OPERATION TO BE PERFORMED")
+    choice = int(input())
+    if choice == 1:
+        contact_1 = Address("Naman", "Chandra", "Basavanagudi", "Bangalore", "Karnataka", "560004", "9538169967",
+                            "naman@gmail.com")
+        contact_2 = Address("Raksha", "R", "JP Nagar", "Bangalore", "Karnataka", "560034", "95945887845",
+                            "raksha@gmail.com")
+        contact_3 = Address("Sanjit", "Kangovi", "ISRO Layout", "Noida", "Delhi", "460034", "7259332866",
+                            "sanjit@gmail.com")
+        address_book.add_contact(contact_1)
+        address_book.add_contact(contact_2)
+        address_book.add_contact(contact_3)
+        print(address_book)
+    elif choice == 2:
+        print("AFTER EDITING")
+        contact_to_edit = "9538169967"
+        updated_contact = Address("Naman", "Chandra", "Basavanagudi", "Bangalore", "Karnataka", "560004",
+                                  "+919538169967",
+                                  "namanchandra@gmail.com")
+        address_book.edit_contact(contact_to_edit)
+        print(address_book)
+    elif choice == 3:
+        contact_to_delete = "Sanjit"
+        address_book.delete_contact(contact_to_delete)
+        print("AFTER DELETING")
+        print(address_book)
+    elif choice == 4:
+        json_file = "sample.json"
+        print("WRITING TO JSON FILE")
+        address_book.write_to_json(json_file)
+    elif choice == 5:
+        print("READING FROM JSON")
+        json_file = "sample.json"
+        address_book.read_from_json(json_file)
+        print(address_book)
+    elif choice == 6:
+        city_to_search = "Bangalore"
+        address_book.search_contact_by_city(city_to_search)
+    elif choice == 7:
+        state_to_search = "Delhi"
+        address_book.search_contact_by_state(state_to_search)
+    elif choice == 8:
+        print("CITY PERSON MAPPING")
+        city_person_mapping = address_book.map_city_with_person()
+        for key, value in city_person_mapping.items():
+            print("City: {}, Person Count: {}".format(key, len(value)))
+            for contact in value:
+                print(contact)
+    elif choice == 9:
+        print("STATE PERSON MAPPING")
+        person_state_mapping = address_book.map_state_with_person()
+        for key, value in person_state_mapping.items():
+            print("State: {}, Person Count: {}".format(key, len(value)))
+            for contact in value:
+                print(contact)
