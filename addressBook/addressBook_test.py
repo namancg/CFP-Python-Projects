@@ -1,6 +1,7 @@
 import pytest
 from address_book import Address
 from address_book_main import AddressBook
+import os
 
 
 @pytest.fixture()
@@ -38,6 +39,14 @@ def test_search_by_city(address_book):
 def test_search_by_state(address_book):
     state_to_be_searched = "Karnataka"
     address_book.search_contact_by_state(state_to_be_searched)
+    assert address_book.total_count() == 1
+
+
+def test_write_and_read_to_json(address_book):
+    json_file = "sample.json"
+    address_book.write_to_json(json_file)
+    assert os.path.isfile(json_file)
+    address_book.read_from_json(json_file)
     assert address_book.total_count() == 1
 
 
