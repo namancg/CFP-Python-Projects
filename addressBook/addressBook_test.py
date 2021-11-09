@@ -16,4 +16,10 @@ def test_adding_contact(address_book):
     assert address_book.total_count() == 1
 
 
+def test_editing_contact(address_book):
+    contact_to_update = Address("Aashvi", "Nagendra", "Kathriguppe", "Bangalore", "Karnataka", "560094", "9882120653",
+                                "aashvinagendra@gmail.com")
+    address_book.edit_contact(contact_to_update)
+    assert address_book.total_count() == 1
+
 
