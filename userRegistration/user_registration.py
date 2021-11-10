@@ -41,6 +41,14 @@ class UserRegistration():
         else:
             print("ENTER VALID MOBILE NUMBER")
 
+    def check_password(self, password_to_be_checked):
+        pattern = "[a-zA-Z0-9].{8,}"
+        result = re.match(pattern, password_to_be_checked)
+        if result:
+            print("PASSWORD IS PROPER")
+        else:
+            print("ENTER VALID PASSWORD")
+
 
 if __name__ == "__main__":
     user_registration = UserRegistration()
@@ -53,3 +61,6 @@ if __name__ == "__main__":
 
     phone_number = input("ENTER MOBILE NUMBER")
     user_registration.check_mobile_number(phone_number)
+
+    password = input("ENTER PASSWORD")
+    user_registration.check_password(password)
