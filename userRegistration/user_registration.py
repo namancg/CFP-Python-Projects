@@ -56,11 +56,55 @@ if __name__ == "__main__":
     last_name = input("ENTER LAST NAME TO BE CHECKED")
     user_registration.check_name(first_name, last_name)
 
-    email_id = input("ENTER THE EMAIL TO BE CHECKED")
-    user_registration.check_email(email_id)
-
     phone_number = input("ENTER MOBILE NUMBER")
     user_registration.check_mobile_number(phone_number)
 
     password = input("ENTER PASSWORD")
     user_registration.check_password(password)
+
+    print("\nEMAIL SAMPLES PROVIDED IS TO BE CHECKED")
+    emailId = "abc@bridgelabz.co.in"
+    user_registration.check_email(emailId)
+    emailId = "abc@bbridgelabz.com"
+    user_registration.check_email(emailId)
+    emailId = "abc@bridgelabz.co.in"
+    user_registration.check_email(emailId)
+    emailId = "abc@bridgelabz.com"
+    user_registration.check_email(emailId)
+    emailId = "abc@yahoo.com"
+    user_registration.check_email(emailId)
+    emailId = "abc@1.com"
+    user_registration.check_email(emailId)
+    emailId = "abc-100@yahoo.com"
+    user_registration.check_email(emailId)
+    emailId = "abc.100@yahoo.com"
+    user_registration.check_email(emailId)
+    emailId = "abc111@abc.com"
+    user_registration.check_email(emailId)
+    emailId = "abc-100@abc.net"
+    user_registration.check_email(emailId)
+    emailId = "abc.100@abc.com.au"
+    user_registration.check_email(emailId)
+
+    emailId = ".abc@abc.com"
+    user_registration.check_email(emailId)
+    emailId = "abc@123@gmaila"
+    user_registration.check_email(emailId)
+    emailId = "abc@abc@gmailcom"
+    user_registration.check_email(emailId)
+    emailId = "abc123@gmaila"
+    user_registration.check_email(emailId)
+    emailId = "abc"
+    user_registration.check_email(emailId)
+    emailId = "abc..2002@gmail.com"
+    user_registration.check_email(emailId)
+    emailId = "abc@abc@gmail.com"
+    user_registration.check_email(emailId)
+    emailId = "abc()*@gmail.com"
+    user_registration.check_email(emailId)
+    emailId = "abc@%*@gmail.com"
+    user_registration.check_email(emailId)
+    emailId = "abc@gmail.com.1a"
+    user_registration.check_email(emailId)
+    emailId = "abc@gmail.com.aa.au"
+    user_registration.check_email(emailId)
