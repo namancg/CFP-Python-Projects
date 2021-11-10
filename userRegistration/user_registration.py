@@ -42,7 +42,7 @@ class UserRegistration():
             print("ENTER VALID MOBILE NUMBER")
 
     def check_password(self, password_to_be_checked):
-        pattern = "[a-zA-Z0-9].{8,}"
+        pattern = "(?=.*[A-Z])[a-zA-Z0-9].{8,}"
         result = re.match(pattern, password_to_be_checked)
         if result:
             print("PASSWORD IS PROPER")
