@@ -33,6 +33,14 @@ class UserRegistration():
         else:
             print("ENTER VALID EMAIL ID")
 
+    def check_mobile_number(self, mobile_number_to_be_checked):
+        pattern = "(0|91)?[0-9][0-9]{9}"
+        result = re.match(pattern, mobile_number_to_be_checked)
+        if result:
+            print("MOBILE NUMBER IS PROPER")
+        else:
+            print("ENTER VALID MOBILE NUMBER")
+
 
 if __name__ == "__main__":
     user_registration = UserRegistration()
@@ -42,3 +50,6 @@ if __name__ == "__main__":
 
     email_id = input("ENTER THE EMAIL TO BE CHECKED")
     user_registration.check_email(email_id)
+
+    phone_number = input("ENTER MOBILE NUMBER")
+    user_registration.check_mobile_number(phone_number)
