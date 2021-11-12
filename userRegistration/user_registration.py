@@ -10,8 +10,7 @@ class UserRegistration():
     def check_first_name(first_name):
         """
         :param first_name: first name input to be checked
-        :param last_name: last name input to be checked
-        :return: if the entered name is proper or not
+        :return: true or exception message
         """
         pattern = "[A-Z]{1}[a-z]{1,}"
         if first_name is None:
@@ -28,7 +27,7 @@ class UserRegistration():
     def check_last_name(last_name):
         """
         :param last_name: last name input to be checked
-        :return: if the entered name is proper or not
+        :return: true or exception message
         """
         try:
             pattern = "[A-Z]{1}[a-z]{1,}"
@@ -49,7 +48,7 @@ class UserRegistration():
     def check_email(email_to_be_checked):
         """
         :param email_to_be_checked: email-id to be checked
-        :return: if the email-id is proper or not
+        :return: true or exception message
         """
         try:
             pattern = "^[a-zA-z]+[a-zA-Z0-9]*[- . + _]?[a-zA-Z0-9]+[@]{1}[a-z0-9]+[.]{1}[a-z]+[.]?[a-z]+$"
@@ -69,6 +68,10 @@ class UserRegistration():
 
     @staticmethod
     def check_mobile_number(mobile_number_to_be_checked):
+        """
+        :param mobile_number_to_be_checked: mobile number to be checked
+        :return: true or exception message
+        """
         try:
             pattern = "(0|91)?[0-9][0-9]{9}"
             if mobile_number_to_be_checked is None:
@@ -86,6 +89,10 @@ class UserRegistration():
 
     @staticmethod
     def check_password(password_to_be_checked):
+        """
+        :param password_to_be_checked:password to be checked
+        :return: true or exception message
+        """
         try:
             pattern = "^(?=.*[a-zA-Z])([a-zA-Z]*[@#$%^&-+=()])*(?=.*[0-9]).{8,}$"
             if password_to_be_checked is None:
