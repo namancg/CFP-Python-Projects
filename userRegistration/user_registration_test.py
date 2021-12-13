@@ -36,3 +36,33 @@ def test_mobile_number():
 def test_password():
     assert user_registration.check_password("Namancg@2020") == True
     assert not user_registration.check_password("nama")
+
+
+# NEGATIVE TEST CASES
+@pytest.mark.xfail
+def test_email_wrong_outcome(email, outcome):
+    assert user_registration.check_email(email) == outcome
+
+
+@pytest.mark.xfail
+def test_first_name_wrong_input_pattern():
+    assert user_registration.check_first_name("Naman") == False
+    assert not user_registration.check_first_name("naman")
+
+
+@pytest.mark.xfail
+def test_last_name_wrong_input_pattern():
+    assert user_registration.check_last_name("Chandra") == False
+    assert not user_registration.check_last_name("chandra")
+
+
+@pytest.mark.xfail
+def test_mobile_number_wrong_input_pattern():
+    assert user_registration.check_mobile_number("9538169967") == False
+    assert not user_registration.check_mobile_number("958 84 84")
+
+
+@pytest.mark.xfail
+def test_password_wrong_input_pattern():
+    assert user_registration.check_password("Namancg@2020") == False
+    assert not user_registration.check_password("nama")
