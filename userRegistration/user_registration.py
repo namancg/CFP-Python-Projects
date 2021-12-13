@@ -12,16 +12,20 @@ class UserRegistration():
         :param first_name: first name input to be checked
         :return: true or exception message
         """
-        pattern = "[A-Z]{1}[a-z]{1,}"
-        if first_name is None:
-            raise UserRegistrationException("INVALID INPUT")
-        if first_name == "":
-            raise UserRegistrationException("EMPTY")
-        result = re.match(pattern, first_name)
-        if result:
-            return True
-        else:
-            return False
+        try:
+            pattern = "[A-Z]{1}[a-z]{1,}"
+            if first_name is None:
+                raise UserRegistrationException("INVALID INPUT")
+            if first_name == "":
+                raise UserRegistrationException("EMPTY")
+            result = re.match(pattern, first_name)
+            if result:
+                print("NAME IS PROPER")
+                return True
+            else:
+                raise UserRegistrationException("ENTER PROPER NAME")
+        except UserRegistrationException as e:
+            print(e)
 
     @staticmethod
     def check_last_name(last_name):
